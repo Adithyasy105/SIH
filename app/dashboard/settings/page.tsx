@@ -35,12 +35,12 @@ export default function SettingsPage() {
       </div>
 
       <Tabs defaultValue="general" className="space-y-6">
-        <TabsList className="grid w-full grid-cols-5">
-          <TabsTrigger value="general">General</TabsTrigger>
-          <TabsTrigger value="verification">Verification</TabsTrigger>
-          <TabsTrigger value="credits">Credits</TabsTrigger>
-          <TabsTrigger value="notifications">Notifications</TabsTrigger>
-          <TabsTrigger value="security">Security</TabsTrigger>
+        <TabsList className="w-full flex flex-nowrap overflow-x-auto gap-2 sm:grid sm:grid-cols-5 sm:overflow-visible">
+          <TabsTrigger value="general" className="shrink-0">General</TabsTrigger>
+          <TabsTrigger value="verification" className="shrink-0">Verification</TabsTrigger>
+          <TabsTrigger value="credits" className="shrink-0">Credits</TabsTrigger>
+          <TabsTrigger value="notifications" className="shrink-0">Notifications</TabsTrigger>
+          <TabsTrigger value="security" className="shrink-0">Security</TabsTrigger>
         </TabsList>
 
         <TabsContent value="general" className="space-y-6">

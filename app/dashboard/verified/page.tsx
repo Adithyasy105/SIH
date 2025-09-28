@@ -140,11 +140,23 @@ export default function VerifiedPage() {
       </div>
 
       <Tabs defaultValue="projects" className="space-y-6">
-        <TabsList className="grid w-full grid-cols-4">
-          <TabsTrigger value="projects">Projects ({verifiedProjects.length})</TabsTrigger>
-          <TabsTrigger value="fielddata">Field Data ({verifiedFieldData.length})</TabsTrigger>
-          <TabsTrigger value="credits">Credits ({verifiedCredits.length})</TabsTrigger>
-          <TabsTrigger value="history">History ({myActions.length})</TabsTrigger>
+        <TabsList className="w-full flex flex-nowrap overflow-x-auto gap-2 sm:grid sm:grid-cols-4 sm:overflow-visible">
+          <TabsTrigger value="projects" className="shrink-0">
+            <span className="hidden xs:inline">Projects ({verifiedProjects.length})</span>
+            <span className="xs:hidden">Proj ({verifiedProjects.length})</span>
+          </TabsTrigger>
+          <TabsTrigger value="fielddata" className="shrink-0">
+            <span className="hidden xs:inline">Field Data ({verifiedFieldData.length})</span>
+            <span className="xs:hidden">Data ({verifiedFieldData.length})</span>
+          </TabsTrigger>
+          <TabsTrigger value="credits" className="shrink-0">
+            <span className="hidden xs:inline">Credits ({verifiedCredits.length})</span>
+            <span className="xs:hidden">Credits ({verifiedCredits.length})</span>
+          </TabsTrigger>
+          <TabsTrigger value="history" className="shrink-0">
+            <span className="hidden xs:inline">History ({myActions.length})</span>
+            <span className="xs:hidden">Hist ({myActions.length})</span>
+          </TabsTrigger>
         </TabsList>
 
         {/* Verified Projects */}

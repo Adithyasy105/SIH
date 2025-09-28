@@ -156,18 +156,21 @@ export default function ReviewsPage() {
       </div>
 
       <Tabs defaultValue="projects" className="space-y-6">
-        <TabsList className="grid w-full grid-cols-3">
-          <TabsTrigger value="projects" className="flex items-center">
-            <FileText className="mr-2 h-4 w-4" />
-            Projects ({pendingProjects.length})
+        <TabsList className="w-full flex flex-nowrap overflow-x-auto gap-2 sm:grid sm:grid-cols-3 sm:overflow-visible">
+          <TabsTrigger value="projects" className="flex items-center shrink-0">
+            <FileText className="mr-1 sm:mr-2 h-4 w-4" />
+            <span className="hidden xs:inline">Projects ({pendingProjects.length})</span>
+            <span className="xs:hidden">Proj ({pendingProjects.length})</span>
           </TabsTrigger>
-          <TabsTrigger value="fielddata" className="flex items-center">
-            <Upload className="mr-2 h-4 w-4" />
-            Field Data ({pendingFieldData.length})
+          <TabsTrigger value="fielddata" className="flex items-center shrink-0">
+            <Upload className="mr-1 sm:mr-2 h-4 w-4" />
+            <span className="hidden xs:inline">Field Data ({pendingFieldData.length})</span>
+            <span className="xs:hidden">Data ({pendingFieldData.length})</span>
           </TabsTrigger>
-          <TabsTrigger value="credits" className="flex items-center">
-            <Award className="mr-2 h-4 w-4" />
-            Carbon Credits ({pendingCredits.length})
+          <TabsTrigger value="credits" className="flex items-center shrink-0">
+            <Award className="mr-1 sm:mr-2 h-4 w-4" />
+            <span className="hidden xs:inline">Carbon Credits ({pendingCredits.length})</span>
+            <span className="xs:hidden">Credits ({pendingCredits.length})</span>
           </TabsTrigger>
         </TabsList>
 

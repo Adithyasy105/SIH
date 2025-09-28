@@ -1,6 +1,6 @@
 "use client"
 
-import {useState, useMemo, useCallback} from "react"
+import {useState, useMemo, useCallback, useEffect} from "react"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
@@ -9,8 +9,12 @@ import { Label } from "@/components/ui/label"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogTrigger } from "@/components/ui/dialog"
 import { ScrollArea } from "@/components/ui/scroll-area"
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { Separator } from "@/components/ui/separator"
+import { Progress } from "@/components/ui/progress"
 import { toast } from "@/hooks/use-toast"
 import { cn } from "@/lib/utils"
+import QRCode from "qrcode"
 import {
   Eye,
   EyeOff,
@@ -23,6 +27,22 @@ import {
   Wallet as WalletIcon,
   Send,
   Banknote,
+  QrCode,
+  Swap,
+  TrendingUp,
+  Shield,
+  Settings,
+  Download,
+  Upload,
+  History,
+  Zap,
+  Star,
+  ExternalLink,
+  ChevronRight,
+  Clock,
+  AlertCircle,
+  Plus,
+  Minus,
 } from "lucide-react"
 
 type TransactionStatus = "success" | "failed" | "pending"
