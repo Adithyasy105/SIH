@@ -24,28 +24,24 @@ const navigationItems = {
     { name: "Home", href: "/dashboard", icon: Home },
     { name: "Sites", href: "/dashboard/sites", icon: MapPin },
     { name: "Projects", href: "/dashboard/projects", icon: TreePine },
-    { name: "Wallet", href: "/dashboard/wallet", icon: Wallet },
     { name: "Credits", href: "/dashboard/credits", icon: Award },
   ],
   Panchayat: [
     { name: "Home", href: "/dashboard", icon: Home },
     { name: "Sites", href: "/dashboard/sites", icon: MapPin },
     { name: "Projects", href: "/dashboard/projects", icon: TreePine },
-    { name: "Wallet", href: "/dashboard/wallet", icon: Wallet },
     { name: "Status", href: "/dashboard/status", icon: BarChart3 },
   ],
   Verifier: [
     { name: "Home", href: "/dashboard", icon: Home },
     { name: "Reviews", href: "/dashboard/reviews", icon: CheckCircle },
     { name: "Verified", href: "/dashboard/verified", icon: Shield },
-    { name: "Wallet", href: "/dashboard/wallet", icon: Wallet },
     { name: "Credits", href: "/dashboard/credits", icon: Award },
   ],
   Admin: [
     { name: "Home", href: "/dashboard", icon: Home },
     { name: "Users", href: "/dashboard/users", icon: Users },
     { name: "Projects", href: "/dashboard/projects", icon: TreePine },
-    { name: "Wallet", href: "/dashboard/wallet", icon: Wallet },
     { name: "Settings", href: "/dashboard/settings", icon: Settings },
   ],
 }

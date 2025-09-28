@@ -16,6 +16,17 @@ export default function WalletPage() {
     )
   }
 
+  // Only NGOs can access wallet
+  if (user.role !== "NGO") {
+    return (
+      <div className="flex items-center justify-center min-h-screen">
+        <div className="text-center">
+          <h1 className="text-2xl font-bold">Wallet is available only for NGO accounts</h1>
+        </div>
+      </div>
+    )
+  }
+
   return (
     <div className="min-h-screen bg-background wallet-container">
       <div className="container mx-auto px-4 py-6">

@@ -7,10 +7,12 @@ import { Button } from "@/components/ui/button"
 import { Avatar, AvatarFallback } from "@/components/ui/avatar"
 import { Waves, Wallet } from "lucide-react"
 import { useState } from "react"
+import WalletModal from "@/components/wallet/WalletModal"
 
 export function Navbar() {
   const { user, logout } = useAuth()
   const [isLoggingOut, setIsLoggingOut] = useState(false)
+  const [isWalletOpen, setIsWalletOpen] = useState(false)
 
   const handleLogout = async () => {
     if (isLoggingOut) return
@@ -22,6 +24,8 @@ export function Navbar() {
       setIsLoggingOut(false)
     }
   }
+
+  
 
   return (
     <nav className="sticky top-0 z-50 border-b border-border/30 bg-background/95 backdrop-blur-xl shadow-sm">
@@ -43,17 +47,20 @@ export function Navbar() {
           <div className="flex items-center space-x-2 sm:space-x-4">
             {user ? (
               <>
-                {/* Wallet Link */}
-                <Button
-                  asChild
-                  variant="ghost"
-                  size="sm"
-                  className="h-8 w-8 sm:h-10 sm:w-10 rounded-full hover:bg-primary/10 transition-all duration-300"
-                >
-                  <Link href="/dashboard/wallet">
-                    <Wallet className="h-4 w-4 sm:h-5 sm:w-5 text-primary" />
-                  </Link>
-                </Button>
+                {/* Wallet toggle (NGO only) */}
+                {user?.role === "NGO" && (
+                  <>
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      className="h-8 w-8 sm:h-10 sm:w-10 rounded-full hover:bg-primary/10 transition-all duration-300"
+                      aria-label="Open Wallet"
+                      onClick={() => setIsWalletOpen(true)}
+                    >
+                      <Wallet className="h-4 w-4 sm:h-5 sm:w-5 text-primary" />
+                    </Button>
+                  </>
+                )}
 
                 {/* Avatar */}
                 <div className="h-8 w-8 sm:h-10 sm:w-10 rounded-full">
@@ -92,7 +99,10 @@ export function Navbar() {
         </div>
       </div>
 
-      {/* Wallet modal removed; using page route */}
+      {/* Wallet modal */}
+      {user?.role === "NGO" && (
+        <WalletModal open={isWalletOpen} onOpenChange={setIsWalletOpen} />
+      )}
     </nav>
   )
 }

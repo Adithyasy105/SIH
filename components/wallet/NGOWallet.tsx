@@ -59,8 +59,11 @@ interface UseNGOWalletResult {
 
 // Mock embedded wallet hook (no external provider)
 function useNGOWallet(): UseNGOWalletResult {
+  // derive per-user seed from auth-user; fall back to random
+  const stored = typeof window !== "undefined" ? localStorage.getItem("auth-user") : null
+  const suffix = stored ? (() => { try { const u = JSON.parse(stored); return (u?.email || u?.name || "user").slice(0,8) } catch { return "user" }})() : "user"
   // very simple pseudo Solana address (base58-ish mock)
-  const [address] = useState<string>(() => `SoL${Math.random().toString(36).slice(2).padEnd(36, "X")}`)
+  const [address] = useState<string>(() => `SoL${btoa(`${suffix}-${Math.random().toString(36).slice(2,6)}`).replace(/[^A-Za-z0-9]/g, "").slice(0,36).padEnd(36,"X")}`)
   const [isActive] = useState<boolean>(true)
   const [balanceSol, setBalanceSol] = useState<number>(3.125)
   const [balanceToken, setBalanceToken] = useState<number>(1250.5)
@@ -273,7 +276,8 @@ export default function NGOWallet() {
       return
     }
     setWithdrawing(true)
-    const ok = await withdrawFunds(wdMethod, amount, wdCurrency)
+    // Fix: Cast wdCurrency to the expected type for withdrawFunds
+    const ok = await withdrawFunds(wdMethod, amount, wdCurrency === "USDC" ? "TOKEN22" : wdCurrency)
     setWithdrawing(false)
     if (ok) {
       setWdOpen(false)
