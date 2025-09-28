@@ -168,10 +168,19 @@
     line-height: 1;
   }
   
+  /* Desktop and tablet adjustments */
+  @media (min-width: 769px) {
+    .mobile-padding {
+      padding-bottom: 2rem;
+      min-height: calc(100vh - 4rem);
+    }
+  }
+  
   /* Mobile responsive adjustments */
   @media (max-width: 768px) {
     .mobile-padding {
-      padding-bottom: 80px;
+      padding-bottom: 100px;
+      min-height: calc(100vh - 100px);
     }
     
     .mobile-text-sm {
@@ -197,6 +206,49 @@
     .mobile-gap-6 {
       gap: 1.5rem;
     }
+    
+    /* Enhanced mobile wallet responsiveness */
+    .mobile-wallet-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.75rem;
+    }
+    
+    .mobile-wallet-button {
+      height: 3rem;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+    
+    .mobile-wallet-icon {
+      width: 1.25rem;
+      height: 1.25rem;
+    }
+    
+    .mobile-wallet-text {
+      font-size: 0.75rem;
+      font-weight: 500;
+    }
+    
+    /* Mobile dialog improvements */
+    .mobile-dialog {
+      margin: 1rem;
+      max-height: calc(100vh - 2rem);
+    }
+    
+    .mobile-dialog-content {
+      padding: 1rem;
+    }
+    
+    /* Mobile form improvements */
+    .mobile-form-input {
+      font-size: 1rem;
+      padding: 0.75rem;
+    }
+    
+    .mobile-form-label {
+      font-size: 0.875rem;
+      margin-bottom: 0.5rem;
+    }
   }
   
   /* Enhanced mobile grid patterns */
@@ -215,6 +267,25 @@
   @media (min-width: 768px) {
     .mobile-card-shadow {
       box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    }
+  }
+  
+  /* Ensure proper content visibility */
+  .wallet-container {
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+  
+  /* Fix for content being cut off */
+  .wallet-content {
+    min-height: 100vh;
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+  
+  /* Ensure all content is visible */
+  @media (max-width: 768px) {
+    .wallet-content {
+      padding-bottom: 120px;
     }
   }
 }
